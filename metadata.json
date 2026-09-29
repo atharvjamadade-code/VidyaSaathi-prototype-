@@ -1,0 +1,6 @@
+{
+  "name": "VidyaSaathi",
+  "description": "Offline-first digital inclusion platform for undergraduate and tribal-belt students in Madhya Pradesh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

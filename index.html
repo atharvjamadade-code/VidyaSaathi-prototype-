@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      /* Ensure window.fetch is writable and configurable in iframe/sandboxed environments */
+      (function() {
+        try {
+          var origFetch = window.fetch;
+          var currentFetch = origFetch ? origFetch.bind(window) : undefined;
+          var descriptor = {
+            get: function() {
+              return currentFetch;
+            },
+            set: function(val) {
+              currentFetch = val;
+            },
+            configurable: true,
+            enumerable: true,
+          };
+          try {
+            Object.defineProperty(window, 'fetch', descriptor);
+          } catch (_) {}
+          try {
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              Object.defineProperty(Window.prototype, 'fetch', descriptor);
+            }
+          } catch (_) {}
+        } catch (e) {
+          // Fallback ignored
+        }
+      })();
+    </script>
+    <title>VidyaSaathi - Rural Higher Education Companion</title>
+    <meta name="description" content="Offline-first digital inclusion platform for undergraduate and tribal-belt students in Madhya Pradesh." />
+    <meta property="og:title" content="VidyaSaathi - Rural Higher Education Companion" />
+    <meta property="og:description" content="Offline-first digital inclusion platform for undergraduate and tribal-belt students in Madhya Pradesh." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#1e3a8a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="VidyaSaathi" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
